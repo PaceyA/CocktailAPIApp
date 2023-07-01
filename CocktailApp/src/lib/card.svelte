@@ -6,12 +6,14 @@ export let drinkImage : string;
 </script>
 
 <div class="card">
-<p>{drinkName}</p>
+    <p>{drinkName}</p>
 <img src="{drinkImage}">
+
 </div>
 
 <style>
 .card{
+    
     border: 1px solid black;
     margin: 1px;
     width: 40%;

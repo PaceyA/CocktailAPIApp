@@ -2,5 +2,7 @@ export interface drinkrecipe
 {
   idDrink : string,
   strDrink : string,
-  strInstructions: string
+  strInstructions: string[],
+  strIngredients : string[],
+  strMeasures : string[]
 }
