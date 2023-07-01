@@ -12,7 +12,7 @@
         let rand = await Math.floor(Math.random()*data.drinks.length)
         drinks = [...drinks, data.drinks[rand]]
       }
-      console.log(drinks); 
+  
     } catch (error) {
       console.error(error);
     }
@@ -38,5 +38,7 @@
 <button on:click={callApi}>Generate Cocktails</button>
 <button on:click={toggleAlcohol}>Alcoholic: {isAlcholic == "Alcoholic"}</button>
 {#each drinks as drink}
+<a href="/{drink.strDrink}">
     <Card drinkName={drink.strDrink} drinkImage={drink.strDrinkThumb}/>
+</a>
 {/each}
