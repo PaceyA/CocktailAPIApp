@@ -5,9 +5,9 @@
         async function callApi() {
         drinks = [];
          try {
-      const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
+      const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${isAlcholic}`);
       const data = await response.json();
-      
+
       for(let i = 0; i < 5; i++){
         let rand = await Math.floor(Math.random()*data.drinks.length)
         drinks = [...drinks, data.drinks[rand]]
@@ -18,12 +18,25 @@
     }
     }
 
+    function toggleAlcohol()
+    {
+        if(isAlcholic == "Alcoholic")
+        {
+            isAlcholic = "Non_Alcoholic"
+        }
+        else{
+            isAlcholic = "Alcoholic"
+        }
+    }
+
     let drinks : drinklist[] = [];
+    let isAlcholic : string = "Alcoholic";
     
 </script>
 
-<h1>Random Cocktail</h1>
+<h1>Random Cocktails</h1>
 <button on:click={callApi}>Generate Cocktails</button>
+<button on:click={toggleAlcohol}>Alcoholic: {isAlcholic == "Alcoholic"}</button>
 {#each drinks as drink}
     <Card drinkName={drink.strDrink} drinkImage={drink.strDrinkThumb}/>
 {/each}
