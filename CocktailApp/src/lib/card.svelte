@@ -5,27 +5,43 @@ export let drinkImage : string;
 
 </script>
 
-<div class="card">
-    <p>{drinkName}</p>
-<img src="{drinkImage}">
+<div class="card" style="width: 20rem;">
+    <img class="card-img-top" src="{drinkImage}" alt="Card image cap">
+    <h1 class="card-title">{drinkName}</h1> 
+  </div>
 
-</div>
+
+
 
 <style>
-.card{
-    
-    border: 1px solid black;
-    margin: 1px;
-    width: 40%;
-    text-align: center;
-    border-radius: 25px;
-}
+
 .card:hover{
-    background-color: rgb(246, 246, 246);
     cursor: pointer;
+    transform: scale(1.1);
 }
-img{
-    height: 100px;
-    width: auto;
+
+.card-img-top{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    
 }
+
+.card{
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    transition: transform .2s;
+    box-shadow: 10px 10px 5px 5px rgb(219, 219, 219);
+}
+
+.card-title{
+    z-index: 100;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
 </style>

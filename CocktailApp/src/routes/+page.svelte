@@ -37,8 +37,18 @@
 <h1>Random Cocktails</h1>
 <button on:click={callApi}>Generate Cocktails</button>
 <button on:click={toggleAlcohol}>Alcoholic: {isAlcholic == "Alcoholic"}</button>
+<div class="drinkscontainer">
 {#each drinks as drink}
 <a href="/{drink.strDrink}">
     <Card drinkName={drink.strDrink} drinkImage={drink.strDrinkThumb}/>
 </a>
 {/each}
+</div>
+
+<style>
+    .drinkscontainer{
+        display: flex;
+        justify-content: space-around;
+        margin: 40px;
+    }
+</style>
