@@ -4,18 +4,27 @@
 
         async function callApi() {
         drinks = [];
+       
+
          try {
       const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${isAlcholic}`);
       const data = await response.json();
 
       for(let i = 0; i < 5; i++){
-        let rand = await Math.floor(Math.random()*data.drinks.length)
-        drinks = [...drinks, data.drinks[rand]]
+        
+        populateArray(data)
       }
   
     } catch (error) {
       console.error(error);
     }
+    
+    }
+
+    async function populateArray(data : any)
+    {
+        let rand = await Math.floor(Math.random()*data.drinks.length)
+        drinks = [...drinks, data.drinks[rand]]
     }
 
     function toggleAlcohol()
@@ -33,10 +42,16 @@
     let isAlcholic : string = "Alcoholic";
     
 </script>
-
+<body>
+<div class="header">
+    <div class="mainText2">
 <h1>Random Cocktails</h1>
-<button on:click={callApi}>Generate Cocktails</button>
-<button on:click={toggleAlcohol}>Alcoholic: {isAlcholic == "Alcoholic"}</button>
+<button  on:click={callApi}>Generate Cocktails</button>
+<button on:click={toggleAlcohol}>{isAlcholic === "Alcoholic" ? 'Alcholic' : 'Non-Alcholic'}</button>
+    </div>
+</div>
+
+<div id="conatinerBody">
 <div class="drinkscontainer">
 {#each drinks as drink}
 <a href="/{drink.strDrink}">
@@ -44,11 +59,45 @@
 </a>
 {/each}
 </div>
-
+</div>
+</body>
 <style>
     .drinkscontainer{
         display: flex;
-        justify-content: space-around;
-        margin: 40px;
+        flex-wrap: wrap;
+       justify-content: space-evenly;
+       align-items: center;
+       
+        
     }
+    #containerBody{
+        height: 100vh;
+    }
+
+    .header{
+        display: flex;
+        justify-content: center;
+    }
+
+    button{
+        background-color: white;
+        border-radius: 5px;
+        padding: 2%;
+    }
+
+    button:hover{
+        background-color: rgb(236, 236, 236);
+    }
+    
+   @media only screen and (max-width: 600px) {
+  .drinkscontainer{
+    flex-direction: column;
+  }
+  }
+
+body{
+    height: 100vh;
+    width: 100vw;
+    
+}
 </style>

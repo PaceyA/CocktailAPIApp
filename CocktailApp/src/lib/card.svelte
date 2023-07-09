@@ -21,7 +21,7 @@ export let drinkImage : string;
 }
 
 .card-img-top{
-    width: 100%;
+    
     height: auto;
     border-radius: 20px;
     
@@ -33,15 +33,30 @@ export let drinkImage : string;
     position: relative;
     transition: transform .2s;
     box-shadow: 10px 10px 5px 5px rgb(219, 219, 219);
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    margin-top: 40px;
 }
 
 .card-title{
     z-index: 100;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    background-color: rgba(41, 41, 41, 0.343);
+    padding: 5px;
+    border-radius: 20px;
 }
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+    }
 
 </style>

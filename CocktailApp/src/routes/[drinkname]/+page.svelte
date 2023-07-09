@@ -1,4 +1,6 @@
+
 <script lang="ts">
+    
     import type {drinkrecipe} from "../../lib/recipe.model";
     export let data;
     let drinkData = data.drink.drinks[0];
@@ -22,11 +24,16 @@
     
     
 </script>
+<body>
+<div id="containerMain">
+    <a href="/">Back</a>
+    <hr>
+    <h1>{drink.strDrink}</h1>
 
-<a href="/">Back</a>
+<div class="containerBody">
 
-<h1>{drink.strDrink}</h1>
-
+    <img src="{drinkData.strDrinkThumb}" alt="drink" style="margin: 20px;"/>
+<div style="margin: 20px;">
 <h2>Ingredients</h2>
 {#each drink.strIngredients as ingredient,i}
     {#if ingredient != null && drink.strMeasures[i] != null}
@@ -43,13 +50,69 @@
     <li>{instruction}.</li>
 {/each}
 </ol>
+</div>
+</div>
+</div>
 
-<img src="{drinkData.strDrinkThumb}"/>
+</body>
 
 <style>
     img{
-        height: 400px;
+        height: 300px;
         width: auto;
         border-radius: 25px;
+    }
+
+    #containerMain{
+        
+       margin: 20px;
+       padding: 20px;
+       border-radius: 20px;
+       background-color: rgb(247, 247, 247);
+       height: 75%;
+       width: 60%;
+    }
+
+   .containerBody{
+    display: flex;
+    justify-content: flex-start;
+   }
+
+   @media only screen and (max-width: 800px) {
+  .containerBody{
+    flex-direction: column;
+  }
+  body{
+    align-items: flex-start;    
+  }
+
+  img{
+    width: 300px;
+  }
+  #containerMain{
+    width: 100%;
+    height: 100%;
+  }
+  }
+
+   body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(229, 229, 229);
+    
+   }
+
+    button{
+        background-color: white;
+        border-radius: 5px;
+       
+    }
+
+    h1{
+        margin-left: 20px;
+        padding-left: 10px;
     }
 </style>
